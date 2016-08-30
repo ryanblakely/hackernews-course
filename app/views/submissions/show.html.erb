@@ -1,5 +1,10 @@
 <div class="page-header">
-  <h3><%= @submission.title %></h3> <a href=""><%= @submission.url %></a>
+  <h3>
+    <%= link_to like_submission_path(@submission), method: :put do %>
+      <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
+    <% end %>
+    <%= @submission.title %></h3> <a href=""><%= @submission.url %></a>
+  </h3>
   <br>
   <% if @submission.user == current_user %>
     <%= link_to 'delete', @submission, method: :delete, data: {confirm: "Are you sure?" } %> |

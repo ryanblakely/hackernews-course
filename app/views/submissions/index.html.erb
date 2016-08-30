@@ -3,11 +3,15 @@
     <% @submissions.each do |submission| %>
       <tr class="post">
         <td>
-          <%= link_to submission.title, submission, class: "title" %>
+          <%= link_to like_submission_path(submission), method: :put do %>
+            <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
+          <% end %>
+
+          <%= link_to submission.title, submission.url, class: "title" %>
           <%= link_to submission.url, "(#{submission.url})", target: "_blank" %>
         </td>
         <tr class="post">
-          <td> <p>325 points by <%= submission.user.email %> <%= time_ago_in_words(submission.created_at) %> | 96 comments </p></td>
+          <td> <p><%= submission.get_upvotes.size %> points by <%= submission.user.email %> <%= time_ago_in_words(submission.created_at) %> ago | 96 comments </p></td>
         </tr>
       </tr>
     <% end %>
