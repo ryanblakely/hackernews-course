@@ -1,14 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @submission.title %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @submission.url %>
-</p>
-
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+<div class="page-header">
+  <h3><%= @submission.title %></h3> <a href=""><%= @submission.url %></a>
+  <br>
+  <% if @submission.user == current_user %>
+    <%= link_to 'delete', @submission, method: :delete, data: {confirm: "Are you sure?" } %> |
+    <%= link_to 'back', submissions_path %>
+  <% end %>
+</div>
