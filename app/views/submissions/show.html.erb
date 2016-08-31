@@ -1,15 +1,13 @@
 <div class="page-header">
-  <h3>
+  <h4>
     <%= link_to like_submission_path(@submission), method: :put do %>
       <i class="fa fa-caret-up fa-lg " aria-hidden="true"></i>
     <% end %>
-    <%= @submission.title %></h3> <a href=""><%= @submission.url %></a>
-  </h3>
+    <%= @submission.title %>
+    <a href="<%= @submission.url %>"><%= @submission.url %></a>
+  </h4>
+  <p><%= @submission.get_upvotes.size %> points by <%= @submission.user.email %> <%= time_ago_in_words(@submission.created_at) %> ago | <%= link_to "#{@submission.comments.count} comments", @submission %> </p>
   <br>
-  <% if @submission.user == current_user %>
-    <%= link_to 'delete', @submission, method: :delete, data: {confirm: "Are you sure?" } %> |
-    <%= link_to 'back', submissions_path %>
-  <% end %>
 
   <%= simple_form_for [@submission, Comment.new] do |f| %>
     <%= f.text_area :body, class: "form-control" %>
@@ -19,5 +17,5 @@
 
   <div id="comments">
     <%= render :partial => @submission.comments %>
-  </div>  
+  </div>
 </div>
