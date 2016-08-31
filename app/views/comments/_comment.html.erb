@@ -1,0 +1,12 @@
+<%= div_for(comment) do %>
+  <div class="comments-wrapper clearfix">
+    <div class="null-left">
+      <p><small> <%= comment.user.email %> <strong><%= time_ago_in_words(comment.created_at) %></strong> ago </small></p>
+      <p class="lead"><%= comment.body %></p>
+    </div>
+  </div>
+
+  <% if comment.user == current_user %>
+    <%= link_to 'delete', comment, method: :delete, data: { confirm: 'are you sure?'} %>
+  <% end %>
+<% end %>

@@ -11,7 +11,7 @@
           <%= link_to submission.url, "(#{submission.url})", target: "_blank" %>
         </td>
         <tr class="post">
-          <td> <p><%= submission.get_upvotes.size %> points by <%= submission.user.email %> <%= time_ago_in_words(submission.created_at) %> ago | 96 comments </p></td>
+          <td> <p><%= submission.get_upvotes.size %> points by <%= submission.user.email %> <%= time_ago_in_words(submission.created_at) %> ago | <%= link_to "#{submission.comments.count} comments", submission %> </p></td>
         </tr>
       </tr>
     <% end %>
